@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?><ob:Openbravo xmlns:ob="http://www.openbravo.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <ADAlertRule id="DB2815590A34440B8782EA4E2E41CCB2" identifier="Return Transaction">
+    <id>DB2815590A34440B8782EA4E2E41CCB2</id>
+    <active>true</active>
+    <creationDate transient="true">2017-05-09T16:16:34.289Z</creationDate>
+    <createdBy transient="true" id="100" entity-name="ADUser" identifier="Openbravo"/>
+    <updated transient="true">2017-05-09T17:52:03.68Z</updated>
+    <updatedBy transient="true" id="100" entity-name="ADUser" identifier="Openbravo"/>
+    <name>Return Transaction</name>
+    <tab id="72A6B3CA5BE848ACA976304375A5B7A6" entity-name="ADTab" identifier="Header - Return Transaction"/>
+    <filterClause>((referencekey_id in (select m_inout_id from m_inout req
+join eut_next_role_line ln on ln.eut_next_role_id= req.em_eut_next_role_id
+where ln.ad_role_id in (@#AD_ROLE_ID@) 
+and req.em_escm_docstatus='ESCM_IP')  and ad_role_id=@#AD_ROLE_ID@)
+or ad_role_id =@#AD_ROLE_ID@
+or (ad_user_id=@#AD_USER_ID@ and status='SOLVED')
+or (referencekey_id in (
+select m_inout_id from m_inout where em_escm_docstatus ='CO'
+ and createdby=@#AD_USER_ID@ )
+and ad_user_id=@#AD_USER_ID@)
+or (referencekey_id in (
+select m_inout_id from m_inout where em_escm_docstatus ='DR' and createdby=@#AD_USER_ID@) 
+and ad_user_id=@#AD_USER_ID@))</filterClause>
+    <sql xsi:nil="true"/>
+    <type>D</type>
+    <eSCMProcessType>INR</eSCMProcessType>
+  </ADAlertRule>
+</ob:Openbravo>

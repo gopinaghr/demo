@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ob:Openbravo xmlns:ob="http://www.openbravo.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <ADAlertRule id="CB98B8712FE549BEB3BD7D6FDAAD64B9" identifier="Custody Transfer">
+    <id>CB98B8712FE549BEB3BD7D6FDAAD64B9</id>
+    <active>true</active>
+    <creationDate transient="true">2017-05-09T17:35:49.254Z</creationDate>
+    <createdBy transient="true" id="100" entity-name="ADUser" identifier="Openbravo a"/>
+    <updated transient="true">2017-05-11T12:35:28.693Z</updated>
+    <updatedBy transient="true" id="100" entity-name="ADUser" identifier="Openbravo a"/>
+    <name>Custody Transfer</name>
+    <tab id="CB9A2A4C6DB24FD19D542A78B07ED6C1" entity-name="ADTab" identifier="Custody Transfer - Custody Transfer"/>
+    <filterClause>((referencekey_id in (select m_inout_id from m_inout hd
+join eut_next_role_line ln on ln.eut_next_role_id= hd.em_eut_next_role_id
+where ln.ad_role_id in (@#AD_ROLE_ID@) 
+and hd.em_escm_docstatus='ESCM_IP')  and ad_role_id=@#AD_ROLE_ID@)
+or ad_role_id =@#AD_ROLE_ID@
+or (ad_user_id=@#AD_USER_ID@ and status='SOLVED')
+or (referencekey_id in (
+select m_inout_id from m_inout where em_escm_docstatus ='CO'
+ and createdby=@#AD_USER_ID@ )
+and ad_user_id=@#AD_USER_ID@)
+or (referencekey_id in (
+select m_inout_id from m_inout where em_escm_docstatus ='DR' and createdby=@#AD_USER_ID@) 
+and ad_user_id=@#AD_USER_ID@))</filterClause>
+    <sql xsi:nil="true"/>
+    <type>D</type>
+    <eSCMProcessType>CT</eSCMProcessType>
+  </ADAlertRule>
+</ob:Openbravo>

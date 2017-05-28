@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ob:Openbravo xmlns:ob="http://www.openbravo.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <ESCM_DefLookups_TypeLn id="4C2A792DDFCC4E5CBF185F40A6EEC379" identifier="CUS - Custody">
+    <id>4C2A792DDFCC4E5CBF185F40A6EEC379</id>
+    <active>true</active>
+    <creationDate transient="true">2017-03-14T11:42:59.752Z</creationDate>
+    <createdBy transient="true" id="100" entity-name="ADUser" identifier="Openbravo a"/>
+    <updated transient="true">2017-03-14T11:42:59.752Z</updated>
+    <updatedBy transient="true" id="100" entity-name="ADUser" identifier="Openbravo a"/>
+    <escmDeflookupsType id="6B2A99AB10844D10A1D67D381F44D9F1" entity-name="ESCM_DefLookups_Type" identifier="PST"/>
+    <searchKey>CUS</searchKey>
+    <description xsi:nil="true"/>
+    <lineNo>20</lineNo>
+    <commercialName>Custody</commercialName>
+  </ESCM_DefLookups_TypeLn>
+  <ESCM_DefLookups_TypeLn id="ED3F8AA035C946B69C6BC949140571CE" identifier="CON - Consumable">
+    <id>ED3F8AA035C946B69C6BC949140571CE</id>
+    <active>true</active>
+    <creationDate transient="true">2017-03-14T11:42:46.894Z</creationDate>
+    <createdBy transient="true" id="100" entity-name="ADUser" identifier="Openbravo a"/>
+    <updated transient="true">2017-03-14T11:42:46.894Z</updated>
+    <updatedBy transient="true" id="100" entity-name="ADUser" identifier="Openbravo a"/>
+    <escmDeflookupsType id="6B2A99AB10844D10A1D67D381F44D9F1" entity-name="ESCM_DefLookups_Type" identifier="PST"/>
+    <searchKey>CON</searchKey>
+    <description xsi:nil="true"/>
+    <lineNo>10</lineNo>
+    <commercialName>Consumable</commercialName>
+  </ESCM_DefLookups_TypeLn>
+</ob:Openbravo>

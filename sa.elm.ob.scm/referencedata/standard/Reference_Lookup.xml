@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ob:Openbravo xmlns:ob="http://www.openbravo.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <ESCM_DefLookups_Type id="6B2A99AB10844D10A1D67D381F44D9F1" identifier="PST">
+    <id>6B2A99AB10844D10A1D67D381F44D9F1</id>
+    <active>true</active>
+    <creationDate transient="true">2017-03-14T11:39:49.340Z</creationDate>
+    <createdBy transient="true" id="100" entity-name="ADUser" identifier="Openbravo a"/>
+    <updated transient="true">2017-03-14T11:39:49.340Z</updated>
+    <updatedBy transient="true" id="100" entity-name="ADUser" identifier="Openbravo a"/>
+    <reference>PST</reference>
+    <description xsi:nil="true"/>
+  </ESCM_DefLookups_Type>
+</ob:Openbravo>

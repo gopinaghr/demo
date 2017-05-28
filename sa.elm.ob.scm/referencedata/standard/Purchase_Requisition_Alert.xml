@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ob:Openbravo xmlns:ob="http://www.openbravo.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <ADAlertRule id="AE8047B0F0954D95A98BE06A97FDA6F1" identifier="Purchase Requisition">
+    <id>AE8047B0F0954D95A98BE06A97FDA6F1</id>
+    <active>true</active>
+    <creationDate transient="true">2017-03-14T12:25:24.307Z</creationDate>
+    <createdBy transient="true" id="100" entity-name="ADUser" identifier="Openbravo a"/>
+    <updated transient="true">2017-05-20T15:05:45.730Z</updated>
+    <updatedBy transient="true" id="95234A45636C4347BC65BE94E2B39F53" entity-name="ADUser" identifier="Ahmad"/>
+    <name>Purchase Requisition</name>
+    <tab id="800249" entity-name="ADTab" identifier="Purchase Requisition - Purchase Requisition"/>
+    <filterClause>(referencekey_id in (select m_requisition_id from m_requisition req
+join eut_next_role_line ln on ln.eut_next_role_id= req.em_eut_next_role_id
+where ln.ad_role_id in (@#AD_ROLE_ID@) 
+and req.em_escm_doc_status='ESCM_IP') 
+
+or( referencekey_id in (
+select m_requisition_id from m_requisition where em_escm_doc_status ='ESCM_AP' and createdby=@#AD_USER_ID@ )
+and (ad_role_id=@#AD_ROLE_ID@ or ad_user_id=@#AD_USER_ID@))
+or referencekey_id in (
+select m_requisition_id from m_requisition where em_escm_doc_status ='DR' and createdby=@#AD_USER_ID@ )
+
+or( referencekey_id in (select m_requisition_id from m_requisition where exists (select 1  from 
+ad_preference where property='ESCM_BudgetControl' and visibleat_role_id=@#AD_ROLE_ID@
+) and em_escm_doc_status='ESCM_CA') and (ad_role_id=@#AD_ROLE_ID@ or ad_user_id=@#AD_USER_ID@))
+
+or( referencekey_id in (select hd.m_requisition_id from m_requisition hd join m_requisitionline ln on ln.m_requisition_id=hd.m_requisition_id  where exists (select 1  from 
+ad_preference where property='ESCM_BudgetControl' and visibleat_role_id=@#AD_ROLE_ID@
+) and ln.em_escm_status='ESCM_CA' and hd.createdby &lt;&gt; @#AD_USER_ID@ ) and ad_role_id=@#AD_ROLE_ID@)
+
+or referencekey_id in (SELECT m_requisition_id   FROM m_requisition
+ req WHERE EXISTS(select 1  from eut_docapp_delegate dl  join eut_docapp_delegateln dll on dl.eut_docapp_delegate_id = dll.eut_docapp_delegate_id
+ where dll.ad_user_id = @#AD_USER_ID@ and dll.ad_role_id =   @#AD_Role_ID@ and dll.document_type = 'EUT_111'
+ and now() between dl.from_date and dl.to_date
+ and dl.ad_role_id in  (
+ select li.ad_role_id from  m_requisition re join  eut_next_role rl 
+ on re.em_eut_next_role_id = rl.eut_next_role_id
+  join eut_next_role_line li on li.eut_next_role_id = rl.eut_next_role_id )) and em_escm_doc_status='ESCM_IP'))</filterClause>
+    <sql xsi:nil="true"/>
+    <type>D</type>
+    <eSCMProcessType>PR</eSCMProcessType>
+  </ADAlertRule>
+</ob:Openbravo>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ob:Openbravo xmlns:ob="http://www.openbravo.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <ADAlertRule id="C1CD869DA4DD4E6492ED7BFC80A747ED" identifier="Material Issue Request">
+    <id>C1CD869DA4DD4E6492ED7BFC80A747ED</id>
+    <active>true</active>
+    <creationDate transient="true">2017-05-04T18:36:53.965Z</creationDate>
+    <createdBy transient="true" id="100" entity-name="ADUser" identifier="Openbravo a"/>
+    <updated transient="true">2017-05-20T14:42:19.526Z</updated>
+    <updatedBy transient="true" id="100" entity-name="ADUser" identifier="Openbravo a"/>
+    <name>Material Issue Request</name>
+    <tab id="CE947EDC9B174248883292F17F03BB32" entity-name="ADTab" identifier="Material Issue Request - Material Issue Request"/>
+    <filterClause>((referencekey_id in (select escm_material_request_id from escm_material_request req
+join eut_next_role_line ln on ln.eut_next_role_id= req.eut_next_role_id
+where ln.ad_role_id in (@#AD_ROLE_ID@) 
+and req.status='ESCM_IP')  and ad_role_id=@#AD_ROLE_ID@)
+or ad_role_id =@#AD_ROLE_ID@
+or (ad_user_id=@#AD_USER_ID@ and status='SOLVED')
+or (referencekey_id in (
+select escm_material_request_id from escm_material_request where status ='ESCM_TR'
+ and createdby=@#AD_USER_ID@ )
+and ad_user_id=@#AD_USER_ID@)
+or referencekey_id in (select escm_material_request_id from escm_material_request req
+join eut_next_role_line ln on ln.eut_next_role_id= req.eut_next_role_id
+where  req.status='DR' and ln.ad_role_id in (@#AD_ROLE_ID@))
+or (referencekey_id in (
+select escm_material_request_id from escm_material_request where status ='DR' and createdby=@#AD_USER_ID@) 
+and ad_user_id=@#AD_USER_ID@)
+or referencekey_id in (SELECT escm_material_request_id FROM escm_material_request 
+  req WHERE EXISTS(select 1  from eut_docapp_delegate dl  join eut_docapp_delegateln dll on dl.eut_docapp_delegate_id = dll.eut_docapp_delegate_id
+ where dll.ad_user_id = @#AD_USER_ID@ and dll.ad_role_id =   @#AD_Role_ID@ and dll.document_type = 'EUT_112'
+ and now() between dl.from_date and dl.to_date
+ and dl.ad_role_id in(
+select li.ad_role_id from escm_material_request re join eut_next_role rl 
+on re.eut_next_role_id = rl.eut_next_role_id
+join eut_next_role_line li on li.eut_next_role_id = rl.eut_next_role_id )) and status= 'ESCM_IP'))</filterClause>
+    <sql xsi:nil="true"/>
+    <type>D</type>
+    <eSCMProcessType>IR</eSCMProcessType>
+  </ADAlertRule>
+</ob:Openbravo>

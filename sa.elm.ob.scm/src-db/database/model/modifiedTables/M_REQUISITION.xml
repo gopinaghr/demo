@@ -1,0 +1,70 @@
+<?xml version="1.0"?>
+  <database name="MODIFIED TABLE M_REQUISITION">
+    <table name="M_REQUISITION" primaryKey="M_REQUISITION_KEY">
+      <column name="EM_ESCM_DOCACTION" primaryKey="false" required="false" type="VARCHAR" size="60" autoIncrement="false">
+        <default><![CDATA[CO]]></default>
+        <onCreateDefault/>
+      </column>
+      <column name="EM_ESCM_REWORK" primaryKey="false" required="false" type="VARCHAR" size="1" autoIncrement="false">
+        <default/>
+        <onCreateDefault/>
+      </column>
+      <column name="EM_ESCM_DOC_STATUS" primaryKey="false" required="false" type="VARCHAR" size="60" autoIncrement="false">
+        <default><![CDATA[DR]]></default>
+        <onCreateDefault/>
+      </column>
+      <column name="EM_ESCM_TOTAL" primaryKey="false" required="false" type="DECIMAL" autoIncrement="false">
+        <default/>
+        <onCreateDefault/>
+      </column>
+      <column name="EM_ESCM_PROCESSTYPE" primaryKey="false" required="false" type="VARCHAR" size="60" autoIncrement="false">
+        <default/>
+        <onCreateDefault/>
+      </column>
+      <column name="EM_ESCM_CANCEL" primaryKey="false" required="false" type="CHAR" size="1" autoIncrement="false">
+        <default><![CDATA[Y]]></default>
+        <onCreateDefault/>
+      </column>
+      <column name="EM_ESCM_SALESREGION_ID" primaryKey="false" required="false" type="VARCHAR" size="32" autoIncrement="false">
+        <default/>
+        <onCreateDefault/>
+      </column>
+      <column name="EM_ESCM_FINANCIAL_YEAR" primaryKey="false" required="false" type="VARCHAR" size="15" autoIncrement="false">
+        <default/>
+        <onCreateDefault/>
+      </column>
+      <column name="EM_ESCM_CANCELLEDBY" primaryKey="false" required="false" type="VARCHAR" size="32" autoIncrement="false">
+        <default/>
+        <onCreateDefault/>
+      </column>
+      <column name="EM_ESCM_CANCEL_DATE" primaryKey="false" required="false" type="TIMESTAMP" size="7" autoIncrement="false">
+        <default/>
+        <onCreateDefault/>
+      </column>
+      <column name="EM_ESCM_CANCEL_REASON" primaryKey="false" required="false" type="VARCHAR" size="100" autoIncrement="false">
+        <default/>
+        <onCreateDefault/>
+      </column>
+      <column name="EM_ESCM_MANUAL_ENCUM_NO" primaryKey="false" required="false" type="VARCHAR" size="32" autoIncrement="false">
+        <default/>
+        <onCreateDefault/>
+      </column>
+      <column name="EM_ESCM_MATERIAL_REQUEST_ID" primaryKey="false" required="false" type="VARCHAR" size="32" autoIncrement="false">
+        <default/>
+        <onCreateDefault/>
+      </column>
+      <column name="EM_ESCM_AD_ROLE_ID" primaryKey="false" required="false" type="VARCHAR" size="32" autoIncrement="false">
+        <default/>
+        <onCreateDefault/>
+      </column>
+      <foreign-key foreignTable="ESCM_MATERIAL_REQUEST" name="EM_ESCM_PR_MIR">
+        <reference local="EM_ESCM_MATERIAL_REQUEST_ID" foreign="ESCM_MATERIAL_REQUEST_ID"/>
+      </foreign-key>
+      <foreign-key foreignTable="C_SALESREGION" name="EM_ESCM_REQUI_DEPT_FK">
+        <reference local="EM_ESCM_SALESREGION_ID" foreign="C_SALESREGION_ID"/>
+      </foreign-key>
+      <foreign-key foreignTable="EUT_NEXT_ROLE" name="EM_ESCM_REQUISITION_NEXT">
+        <reference local="EM_EUT_NEXT_ROLE_ID" foreign="EUT_NEXT_ROLE_ID"/>
+      </foreign-key>
+    </table>
+  </database>

@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+  <database name="MODIFIED TABLE M_REQUISITIONLINE">
+    <table name="M_REQUISITIONLINE" primaryKey="M_REQUISITIONLINE_KEY">
+      <column name="EM_ESCM_CANCEL_REASON" primaryKey="false" required="false" type="VARCHAR" size="100" autoIncrement="false">
+        <default/>
+        <onCreateDefault/>
+      </column>
+      <column name="EM_ESCM_CANCEL_DATE" primaryKey="false" required="false" type="TIMESTAMP" size="7" autoIncrement="false">
+        <default/>
+        <onCreateDefault/>
+      </column>
+      <column name="EM_ESCM_CANCELLEDBY" primaryKey="false" required="false" type="VARCHAR" size="32" autoIncrement="false">
+        <default/>
+        <onCreateDefault/>
+      </column>
+      <column name="EM_ESCM_ACCOUNTNO_AMT" primaryKey="false" required="false" type="VARCHAR" size="32" autoIncrement="false">
+        <default/>
+        <onCreateDefault/>
+      </column>
+      <column name="EM_ESCM_STATUS" primaryKey="false" required="false" type="VARCHAR" size="60" autoIncrement="false">
+        <default/>
+        <onCreateDefault/>
+      </column>
+      <column name="EM_ESCM_MATERIAL_REQLN_ID" primaryKey="false" required="false" type="VARCHAR" size="32" autoIncrement="false">
+        <default/>
+        <onCreateDefault/>
+      </column>
+      <foreign-key foreignTable="ESCM_MATERIAL_REQLN" name="EM_ESCM_PRLN_MIRLN">
+        <reference local="EM_ESCM_MATERIAL_REQLN_ID" foreign="ESCM_MATERIAL_REQLN_ID"/>
+      </foreign-key>
+    </table>
+  </database>
